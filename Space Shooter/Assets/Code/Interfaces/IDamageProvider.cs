@@ -1,6 +1,7 @@
-﻿namespace SpaceShooter
+namespace SpaceShooter
 {
-	public interface IDamageProvider {
+	public interface IDamageProvider
+	{
 		int GetDamage();
 	}
 }

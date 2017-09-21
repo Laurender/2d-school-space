@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212510866591295484}
   - component: {fileID: 95238595940935612}
   - component: {fileID: 114450907823425910}
-  - component: {fileID: 61524535975529056}
+  - component: {fileID: 58283386183444012}
   m_Layer: 9
   m_Name: EnemyUnit1
   m_TagString: Untagged
@@ -43,8 +43,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61524535975529056
-BoxCollider2D:
+--- !u!58 &58283386183444012
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,11 +52,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.0031364113, y: -0.032409303}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.29336318, y: 0.29336315}
+  m_Radius: 0.2
 --- !u!95 &95238595940935612
 Animator:
   serializedVersion: 3
