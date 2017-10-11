@@ -1,46 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpaceShooter
 {
-	public class Health : MonoBehaviour, IHealth 
+	public class Health : MonoBehaviour, IHealth
 	{
-		private int currentHealth; //"backing field" of CurrentHealth
-		public int CurrentHealth //The property CurrentHealth
-		{
-			get{return currentHealth;}
-		}
+		[SerializeField] private int _initialHealth;
+		[SerializeField] private int _minHealth;
+		[SerializeField] private int _maxHealth;
 
-		[SerializeField]
-		private int startHealth; //starting health
-		[SerializeField]
-		private int minHealth; //minimum health
-		[SerializeField]
-		private int maxHealth; //maximum health
+		private int _currentHealth;
 
-		private void Start()
+		public int CurrentHealth
 		{
-			currentHealth = startHealth; //at the creation of object, set health to defined start value
-		}
-
-		public void IncreaseHealth(int amount)
-		{
-			if ((currentHealth + amount) > maxHealth) //if new health would be more than the maximum
+			get
 			{
-				currentHealth = maxHealth; //set health to maximum
-			} 
-			else //else if new health would be less or equal to maximum
-			{
-				currentHealth += amount; //add amount to current health
+				return _currentHealth;
 			}
+			private set
+			{
+				_currentHealth = Mathf.Clamp(value, _minHealth, _maxHealth);
+			}
+		}
+
+		public bool IsDead
+		{
+			get { return CurrentHealth == _minHealth; }
+		}
+
+		protected void Awake()
+		{
+			CurrentHealth = _initialHealth;
 		}
 
 		public void DecreaseHealth(int amount)
 		{
-			currentHealth -= amount; //lower current health by amount
+			// CurrentHealth = CurrentHealth - amount;
+			CurrentHealth -= amount;
+		}
 
-			//if health now less than zero, die. not part of assingnment, so probably added in next class.
+		public void IncreaseHealth(int amount)
+		{
+			CurrentHealth += amount;
 		}
 	}
 }
